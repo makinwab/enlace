@@ -19,7 +19,7 @@
       <div class="col-sm-4">
         <div class="panel-group">
           <div class="panel panel-default">
-            <div class="panel-heading">http://localhost:3000/ <%= link.slug %></div>
+            <div class="panel-heading"><%= ENV["BASE_URL"] + link.slug %></div>
             <div class="panel-body">
               <p><%= h truncate(link.given_url, :length => 30) %></p>
               <h4>Clicks: <%= link.clicks %></h4>

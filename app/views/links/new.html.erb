@@ -1,31 +1,3 @@
-<!-- Navbar -->
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="<%= root_path %>">Enlace</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Home', root_path %></li>
-        <li><a href="#">Sign In</a></li>
-        <li><a href="#">Sign Up</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- First Container -->
-<div class="container-fluid bg-1 text-center">
-  <h3 class="margin">Tired of Long Links?</h3>
-  <img src=" <%= asset_path('bird.jpg') %> " class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
-  <h3>Get the shortest and easy to remember links.</h3>
-</div>
-
 <!-- Second Container -->
 <div class="container-fluid bg-2 text-center">
   <h3 class="margin">Acorta Tus Enlaces Aqui.</h3>
@@ -38,29 +10,23 @@
     <%= render 'form' %>
 </div>
 
+
 <!-- Third Container (Grid) -->
 <div class="container-fluid bg-3 text-center">    
-  <h3 class="margin">Where To Find Me?</h3><br>
+  <h3 class="margin">Most Popular Links</h3><br>
   <div class="row">
-    <div class="col-sm-4">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="<%= asset_path('birds1.jpg') %>" class="img-responsive margin" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-4"> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="<%= asset_path('birds2.jpg') %>" class="img-responsive margin" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-4"> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="<%= asset_path('birds3.jpg') %>" class="img-responsive margin" style="width:100%" alt="Image">
-    </div>
+    <% @links.each do |link| %>
+      <div class="col-sm-4">
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">http://localhost:3000/ <%= link.slug %></div>
+            <div class="panel-body">
+              <p><%= h truncate(link.given_url, :length => 30) %></p>
+              <h4>Clicks: <%= link.clicks %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
-  <p>Enlace hecho por mi <a href="github.com/andela-bmakinwa/enlace">aqui</a>.</p> 
-</footer>
-
-</body>
-</html>

@@ -20,6 +20,7 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
+    @links = Link.order(clicks: :desc).limit(3)
   end
 
   # GET /links/1/edit

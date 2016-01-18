@@ -5,15 +5,15 @@ class LinksController < ApplicationController
   # GET /links.json
   def index
     @links = Link.all
-    redirect_to root_path
   end
 
   # GET /links/1
   # GET /links/1.json
   def show
     @link = Link.find_by_slug(params[:slug])
-    
-    #update visits
+    @link.clicks += 1
+    @link.save
+
     redirect_to @link.given_url
   end
 

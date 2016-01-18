@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :set_link, only: [:edit, :update, :destroy]
 
   # GET /links
   # GET /links.json
@@ -10,6 +10,10 @@ class LinksController < ApplicationController
   # GET /links/1
   # GET /links/1.json
   def show
+    @link = Link.find_by_slug(params[:slug])
+    
+    #update visits
+    redirect_to @link.given_url
   end
 
   # GET /links/new
@@ -26,11 +30,9 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
 
-    flash.notice = "Short Url is '#{@link.display_slug}'"
-
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
+        format.html { redirect_to root_path, notice: "Short Url is '#{@link.display_slug}'" }
         format.json { render :show, status: :created, location: @link }
       else
         format.html { render :new }

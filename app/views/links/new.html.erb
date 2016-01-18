@@ -7,11 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Enlace</a>
+      <a class="navbar-brand" href="<%= root_path %>">Enlace</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Home', new_link_path %></li>
+        <li><%= link_to 'Home', root_path %></li>
         <li><a href="#">Sign In</a></li>
         <li><a href="#">Sign Up</a></li>
       </ul>
@@ -29,6 +29,12 @@
 <!-- Second Container -->
 <div class="container-fluid bg-2 text-center">
   <h3 class="margin">Acorta Tus Enlaces Aqui.</h3>
+  <% unless flash.notice == nil %>
+    <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Success!</strong> <%= flash.notice %>
+    </div>
+  <% end %>
     <%= render 'form' %>
 </div>
 
@@ -53,7 +59,7 @@
 
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
-  <p>Bootstrap Theme Made By <a href="http://www.w3schools.com">www.w3schools.com</a></p> 
+  <p>Enlace hecho por mi <a href="github.com/andela-bmakinwa/enlace">aqui</a>.</p> 
 </footer>
 
 </body>

@@ -5,6 +5,7 @@ class LinksController < ApplicationController
   # GET /links.json
   def index
     @links = Link.all
+    redirect_to root_path
   end
 
   # GET /links/1

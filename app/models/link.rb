@@ -2,8 +2,8 @@ class Link < ActiveRecord::Base
   after_create :generate_slug
   
   def generate_slug
-      self.slug = self.id.to_s << 5.times.map { [*'0'..'9', *'a'..'z'].sample }.join
-      self.save
+    self.slug = self.id.to_s << 5.times.map { [*'0'..'9', *'a'..'z'].sample }.join
+    self.save
   end
 
   def display_slug

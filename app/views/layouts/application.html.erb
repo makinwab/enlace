@@ -65,9 +65,14 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Home', root_path %></li>
-        <li><a href="#">Sign In</a></li>
-        <li><a href="#">Sign Up</a></li>
+        
+        <% if @current_user.id == nil %>
+          <li><%= link_to "Sign In", users_path %></li>
+          <li><%= link_to "Sign Up", new_user_path %></li>
+        <% else %>
+          <li><%= link_to @current_user.name, "#" %></li>
+          <li><%= link_to 'Logout', root_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>

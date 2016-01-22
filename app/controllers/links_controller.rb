@@ -21,6 +21,12 @@ class LinksController < ApplicationController
   def new
     @link = Link.new
     @links = Link.order(clicks: :desc).limit(3)
+    
+    unless session[:user_id] == nil
+      @links = Link.where(user_id: session[:user_id]).order(clicks: :desc).limit(3)
+    end
+
+    auth_user
   end
 
   # GET /links/1/edit
@@ -30,7 +36,9 @@ class LinksController < ApplicationController
   # POST /links
   # POST /links.json
   def create
+
     @link = Link.new(link_params)
+    @link.user_id = session[:user_id]
 
     respond_to do |format|
       if @link.save
@@ -76,5 +84,9 @@ class LinksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
       params.require(:link).permit(:given_url)
+    end
+
+    def auth_user
+      @current_user = User.find(session[:user_id]) if (session[:user_id] != nil)
     end
 end

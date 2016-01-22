@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :links
   root 'links#new'
   get '/:slug' => 'links#show'

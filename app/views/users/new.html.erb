@@ -1,0 +1,10 @@
+<div class="container-fluid bg-2 text-center">
+  <h3 class="margin">Create Account</h3>
+  <% unless flash.notice == nil %>
+    <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Success!</strong> <%= flash.notice %>
+    </div>
+  <% end %>
+    <%= render 'form' %>
+</div>

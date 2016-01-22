@@ -1,20 +1,20 @@
 <!-- Second Container -->
 <div class="container-fluid bg-2 text-center">
+  <p id="notice"><%= notice %></p>
   <h3 class="margin">Acorta Tus Enlaces Aqui.</h3>
-  <p><%= @current_user.name %></p>
   <% unless flash.notice == nil %>
     <div class="alert alert-success">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Success!</strong> <%= flash.notice %>
     </div>
   <% end %>
-    <%= render 'form' %>
+    <%= render partial: "/links/form" %>
 </div>
 
 
 <!-- Third Container (Grid) -->
 <div class="container-fluid bg-3 text-center">    
-  <h3 class="margin">Most Popular Links</h3><br>
+  <h3 class="margin">My shortened Links</h3><br>
   <div class="row">
     <% @links.each do |link| %>
       <div class="col-sm-4">

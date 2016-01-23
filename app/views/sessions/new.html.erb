@@ -11,12 +11,15 @@
         </div>
       <% end %>
       <%= form_for(:session, url: login_path) do |f| %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
 
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control' %>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
         <br>
         <%= f.submit "Log in", class: "btn btn-primary" %>
       <% end %>

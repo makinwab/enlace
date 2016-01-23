@@ -30,10 +30,10 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
-    @links = Link.order(clicks: :desc).limit(3)
+    @links = Link.order(clicks: :desc)
 
     unless session[:user_id] == nil
-      @links = Link.where(user_id: session[:user_id]).order(clicks: :desc).limit(3)
+      @links = Link.where(user_id: session[:user_id]).order(clicks: :desc)
     end
   end
 

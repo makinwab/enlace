@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-<div class="container">
+<div class="row">
   <div class="form-group">
     <label for="given_url">Link Url</label>
-    <%= f.text_field :given_url, class: "form-control input-lg", id:"inputlg", placeholder: "Enter Url" %>
+    <%= f.text_field :given_url, class: "form-control input-lg", id:"inputlg"%>
   </div>
+  <% unless @current_user.nil? %>
   <div class="form-group">
     <label for="slug">Vanity String</label>
-    <% unless @current_user.id == nil %>
-      <%= f.text_field :slug, class: "form-control input-lg", id:"inputlg", placeholder: "Enter Vanity String" %>
-    <% end %>
+      <%= f.text_field :slug, class: "form-control input-lg", id:"inputlg" %>
   </div>
+  <% end %>
 </div>
 
 <br>
 <div class="row">
   <div class="actions">
-    <%= f.submit class: 'btn btn-default' %>
+    <%= f.submit "Shorten", class: 'btn btn-default' %>
   </div>
 </div>
 <% end %>

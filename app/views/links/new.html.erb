@@ -1,11 +1,14 @@
 <!-- Second Container -->
 <div class="container-fluid bg-2 text-center">
   <h3 class="margin">Acorta Tus Enlaces Aqui.</h3>
-  <p><%= @current_user.name %></p>
-  <% unless flash.notice == nil %>
+  <% unless flash.error == nil %>
     <div class="alert alert-success">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Success!</strong> <%= flash.notice %>
+    </div>
+    <div class="alert alert-warning">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Warning!</strong> <%= flash.error %>
     </div>
   <% end %>
     <%= render 'form' %>
@@ -24,6 +27,7 @@
             <div class="panel-body">
               <p><%= h truncate(link.given_url, :length => 30) %></p>
               <h4>Clicks: <%= link.clicks %></h4>
+              <%= link_to "Edit", edit_link_path(link.id) %>
             </div>
           </div>
         </div>

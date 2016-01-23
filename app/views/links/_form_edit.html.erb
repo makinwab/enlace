@@ -22,12 +22,25 @@
       <%= f.text_field :slug, class: "form-control input-lg", id:"inputlg", placeholder: "Enter Vanity String" %>
     <% end %>
   </div>
+
+  <label for="active"> Change link state</label>
+  <div class="form-group">
+    <%= f.radio_button :active, true, checked: @link.active %> &nbsp;
+    <%= f.label :active, "Enable" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.radio_button :active, false, checked: !@link.active %> &nbsp;
+    <%= f.label :active, "Disable" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-default' %>
+  </div>
 </div>
 
 <br>
 <div class="row">
-  <div class="actions">
-    <%= f.submit class: 'btn btn-default' %>
-  </div>
+  
 </div>
 <% end %>

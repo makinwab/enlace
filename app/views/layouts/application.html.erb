@@ -36,7 +36,12 @@
     </div>
   </div>
 </nav>
-
+<% unless flash[:error].blank? %>
+   <div class="alert alert-danger">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <center><strong>Warning!</strong> <%= flash[:error] %></center>
+  </div>
+<% end %> 
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center">
   <h3 class="margin">Tired of Long Links?</h3>

@@ -1,13 +1,9 @@
 
   <h3 class="margin">Editing Link</h3>
-  <% unless flash.notice == nil || flash.error == nil %>
+  <% unless flash.notice == nil%>
     <div class="alert alert-success">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Success!</strong> <%= flash.notice %>
-    </div>
-    <div class="alert alert-warning">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Warning!</strong> <%= flash.error %>
     </div>
   <% end %>
     <%= render 'form_edit' %>

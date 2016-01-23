@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_action :auth_user, only: [:edit, :new, :destroy]
+  before_action :auth_user, only: [:edit, :new, :show, :destroy]
   before_action :set_link, only: [:edit, :update]
 
   # GET /links
@@ -14,10 +14,12 @@ class LinksController < ApplicationController
     @link = Link.find_by_slug(params[:slug])
 
     if @link.active == false
-      flash[:error] = "The url has been disabled"
-      redirect_to new_link_path
+      short_url = ENV["BASE_URL"] + params[:slug]
+      flash[:error] = "The Url '#{short_url}' is disabled"
+      redirect_to root_path
       return
     end
+
     @link.clicks += 1
     @link.save
 

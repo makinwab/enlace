@@ -1,17 +1,13 @@
 <!-- Second Container -->
 <div class="container-fluid bg-2 text-center">
   <h3 class="margin">Acorta Tus Enlaces Aqui.</h3>
-  <% unless flash.error == nil %>
+  <% unless flash.notice == nil %>
     <div class="alert alert-success">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Success!</strong> <%= flash.notice %>
     </div>
-    <div class="alert alert-warning">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Warning!</strong> <%= flash.error %>
-    </div>
   <% end %>
-    <%= render 'form' %>
+  <%= render 'form' %>
 </div>
 
 

@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
   before_action :auth_user, only: [:edit, :new, :show, :destroy]
-  before_action :set_link, only: [:edit, :update]
+  before_action :set_link, only: [:edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token 
 
   # GET /links
   # GET /links.json
@@ -13,9 +14,9 @@ class LinksController < ApplicationController
   def show
     @link = Link.find_by_slug(params[:slug])
 
-    if @link.active == false
+    if @link == nil || @link.active == false
       short_url = ENV["BASE_URL"] + params[:slug]
-      flash[:error] = "The Url '#{short_url}' is disabled"
+      flash[:error] = "The Url '#{short_url}' has been disabled or deleted"
       redirect_to root_path
       return
     end
@@ -77,7 +78,7 @@ class LinksController < ApplicationController
   def destroy
     @link.destroy
     respond_to do |format|
-      format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Link was successfully deleted.' }
       format.json { head :no_content }
     end
   end

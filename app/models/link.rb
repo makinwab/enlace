@@ -1,5 +1,7 @@
 class Link < ActiveRecord::Base
   after_create :generate_slug
+  #validates_presence_of :slug
+  #validates_presence_of :given_url
   
   def generate_slug
     if self.slug == nil

@@ -13,7 +13,7 @@
 /tmp
 
 # Ignore application configuration
-/config/application.yml
+# /config/application.yml
 
 app/assets/images/.DS_Store
 

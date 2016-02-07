@@ -1,0 +1,38 @@
+<!-- Second Container -->
+<div class="container-fluid bg-2 text-center">
+  <h3 class="margin">Acorta Tus Enlaces Aqui.</h3>
+  <% unless flash.notice == nil %>
+    <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Success!</strong> <%= flash.notice %>
+    </div>
+  <% end %>
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'form' %>
+  </div>
+</div>
+
+
+<!-- Third Container (Grid) -->
+<div class="container-fluid bg-3 text-center">    
+  <h3 class="margin">Most Popular Links</h3><br>
+  <div class="row">
+    <% @links.each do |link| %>
+      <div class="col-sm-4">
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading"><%= ENV["BASE_URL"] + link.slug %></div>
+            <div class="panel-body">
+              <p><%= h truncate(link.given_url, length: 30) %></p>
+              <h4>Clicks: <%= link.clicks %></h4>
+              <% unless @current_user.nil? %>
+                <%= link_to "Edit", edit_link_path(link.id) %>
+                <%= link_to "Delete", link_path(link), method: :delete, data: {confirm: "Really delete the Article?"} %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

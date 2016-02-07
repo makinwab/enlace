@@ -1,0 +1,29 @@
+<div class="container-fluid bg-2 text-center">
+  <% provide(:title, "Log in") %>
+  <h3 class="margin">Sign In</h3>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <% unless flash[:danger].blank? %>
+        <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong><%= flash[:danger] %></strong>
+        </div>
+      <% end %>
+      <%= form_for(:session, url: login_path) do |f| %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+        <br>
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

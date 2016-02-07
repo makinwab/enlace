@@ -2,13 +2,59 @@
 <html>
 <head>
   <title>Enlace</title>
+  <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>">Enlace</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+        <% if @current_user.nil? %>
+          <li><%= link_to "Sign In", login_path %></li>
+          <li><%= link_to "Sign Up", new_user_path %></li>
+        <% else %>
+          <li><%= link_to @current_user.name, "#" %></li>
+          <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<% unless flash[:error].blank? %>
+   <div class="alert alert-danger">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <center><strong>Warning!</strong> <%= flash[:error] %></center>
+  </div>
+<% end %> 
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+  <h3 class="margin">Tired of Long Links?</h3>
+  <img src=" <%= asset_path('bird.jpg') %> " class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
+  <h3>Get the shortest and easy to remember links.</h3>
+</div>
 
 <%= yield %>
 
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p>Enlace hecho por mi <a href="github.com/andela-bmakinwa/enlace">aqui</a>.</p> 
+</footer>
 </body>
 </html>

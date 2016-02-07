@@ -1,0 +1,46 @@
+<%= form_for(@link, html: {role: "form"}) do |f| %>
+  <% if @link.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
+
+      <ul>
+      <% @link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+  <div class="form-group">
+    <label for="given_url">Link Url</label>
+    <%= f.text_field :given_url, class: "form-control input-lg", id:"inputlg"%>
+  </div>
+  <div class="form-group">
+    <label for="slug">Vanity String</label>
+    <% unless @current_user.id == nil %>
+      <%= f.text_field :slug, class: "form-control input-lg", id:"inputlg"%>
+    <% end %>
+  </div>
+
+  <label for="active"> Change link state</label>
+  <div class="form-group">
+    <%= f.radio_button :active, true, checked: @link.active %> &nbsp;
+    <%= f.label :active, "Enable" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.radio_button :active, false, checked: !@link.active %> &nbsp;
+    <%= f.label :active, "Disable" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class: 'btn btn-default' %>
+  </div>
+</div>
+
+<br>
+<div class="row">
+  
+</div>
+<% end %>

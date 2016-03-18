@@ -24,5 +24,4 @@ Link.create(
   title: nil
 )
 
-
 puts "Seeding successful"

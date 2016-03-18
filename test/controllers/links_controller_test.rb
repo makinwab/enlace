@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class LinksControllerTest < ActionController::TestCase
   setup do
@@ -17,10 +17,16 @@ class LinksControllerTest < ActionController::TestCase
   end
 
   test "should create link" do
-    assert_difference('Link.count') do
-      post :create, link: { clicks: @link.clicks, given_url: @link.given_url, slug: @link.slug, snapshot: @link.snapshot, title: @link.title }
+    assert_difference("Link.count") do
+      post :create, link: {
+        clicks: @link.clicks,
+        given_url: @link.given_url,
+        slug: @link.slug,
+        snapshot: @link.snapshot,
+        title: @link.title
+      }
     end
-
+    
     assert_redirected_to link_path(assigns(:link))
   end
 
@@ -35,12 +41,18 @@ class LinksControllerTest < ActionController::TestCase
   end
 
   test "should update link" do
-    patch :update, id: @link, link: { clicks: @link.clicks, given_url: @link.given_url, slug: @link.slug, snapshot: @link.snapshot, title: @link.title }
+    patch :update, id: @link, link: {
+      clicks: @link.clicks,
+      given_url: @link.given_url,
+      slug: @link.slug,
+      snapshot: @link.snapshot,
+      title: @link.title
+    }
     assert_redirected_to link_path(assigns(:link))
   end
 
   test "should destroy link" do
-    assert_difference('Link.count', -1) do
+    assert_difference("Link.count", -1) do
       delete :destroy, id: @link
     end
 

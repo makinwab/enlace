@@ -1,0 +1,21 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: true
+    checks:
+      Rubocop/Rails/Output:
+        enabled: false
+      Rubocop/Rails/TimeZone:
+        enabled: false
+ratings:
+  paths:
+  - "**.rb"
+exclude_paths:
+- spec/**/*

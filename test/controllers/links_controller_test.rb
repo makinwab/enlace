@@ -26,7 +26,7 @@ class LinksControllerTest < ActionController::TestCase
         title: @link.title
       }
     end
-    
+
     assert_redirected_to link_path(assigns(:link))
   end
 

@@ -47,7 +47,7 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     @link.user_id = session[:user_id]
-
+    @link.slug = nil if @link.slug.empty?
     respond_to do |format|
       if @link.save
         format.html do

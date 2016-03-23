@@ -1,4 +1,4 @@
-{<img src="https://codeclimate.com/github/andela-bmakinwa/enlace/badges/gpa.svg" />}[https://codeclimate.com/github/andela-bmakinwa/enlace] {<img src="https://codeclimate.com/github/andela-bmakinwa/enlace/badges/coverage.svg" />}[https://codeclimate.com/github/andela-bmakinwa/enlace/coverage] {<img src="https://codeclimate.com/github/andela-bmakinwa/enlace/badges/issue_count.svg" />}[https://codeclimate.com/github/andela-bmakinwa/enlace]
+[![Code Climate](https://codeclimate.com/github/andela-bmakinwa/enlace/badges/gpa.svg)](https://codeclimate.com/github/andela-bmakinwa/enlace) [![Test Coverage](https://codeclimate.com/github/andela-bmakinwa/enlace/badges/coverage.svg)](https://codeclimate.com/github/andela-bmakinwa/enlace/coverage) [![Build Status](https://semaphoreci.com/api/v1/makinwa37/enlace/branches/master/badge.svg)](https://semaphoreci.com/makinwa37/enlace)
 == README
 ENLACE
 

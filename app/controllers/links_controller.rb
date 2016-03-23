@@ -1,4 +1,3 @@
-require "pry"
 class LinksController < ApplicationController
   before_action :auth_user, only: [:edit, :new, :show, :destroy]
   before_action :set_link, only: [:edit, :update, :destroy]

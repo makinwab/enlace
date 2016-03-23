@@ -8,10 +8,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      flash[:danger] = 'Email or Password is incorrect' # Not quite right!
-      render 'new'
+      flash[:danger] = "Email or Password is incorrect" # Not quite right!
+      render "new"
     end
-
   end
 
   def destroy

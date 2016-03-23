@@ -14,7 +14,7 @@ RSpec.describe LinksController, type: :controller do
   describe "GET #new" do
     context "when a user is logged in" do
       it "renders the new template" do
-        user, link = create_links_with_users
+        user, = create_links_with_users
 
         get :new, {}, user_id: user.id
 
@@ -56,27 +56,34 @@ RSpec.describe LinksController, type: :controller do
         post :create, link: { given_url: link.given_url }
 
         expect(response.status).to eql 302
-        expect(flash[:notice]).to match(/^Short Url is '#{Link.last.display_slug}'/)
+        expect(flash[:notice]).to match(
+          /^Short Url is '#{Link.last.display_slug}'/
+        )
       end
     end
 
     context "when a user is logged in" do
       it "creates a link for the user" do
-        user, link = create_links_with_users
+        user, = create_links_with_users
 
         expect(response.status).to eql 302
         expect(Link.last.user_id).to eql user.id
-        expect(flash[:notice]).to match(/^Short Url is '#{Link.last.display_slug}'/)
+        expect(flash[:notice]).to match(
+          /^Short Url is '#{Link.last.display_slug}'/
+        )
       end
     end
   end
 
   describe "PUT #update" do
     it "updates a link" do
-      user, link = create_links_with_users
+      user, = create_links_with_users
       latest_link = Link.last
 
-      put :update, { id: latest_link.id, link: { active: true } }, user_id: user.id
+      put :update, {
+        id: latest_link.id,
+        link: { active: true }
+      }, user_id: user.id
 
       updated_link = Link.find_by(id: latest_link.id)
 
@@ -88,7 +95,7 @@ RSpec.describe LinksController, type: :controller do
 
   describe "DELETE #destroy" do
     it "deletes a link" do
-      user, link = create_links_with_users
+      create_links_with_users
       latest_link = Link.last
 
       delete :destroy, id: latest_link.id

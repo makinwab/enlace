@@ -11,7 +11,11 @@ RSpec.describe UsersController, type: :controller do
   describe "POST #create" do
     it "creates user and renders template" do
       user = create(:user)
-      post :create, user: { name: user.name, email: user.email, password: user.password }
+      post :create, user: {
+        name: user.name,
+        email: user.email,
+        password: user.password
+      }
 
       expect(response.status).to eql 302
       expect(response).to redirect_to "/links/new"

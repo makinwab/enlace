@@ -47,7 +47,6 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     @link.user_id = session[:user_id]
-    @link.slug = nil if @link.slug.empty?
     respond_to do |format|
       if @link.save
         format.html do
@@ -69,7 +68,7 @@ class LinksController < ApplicationController
       if @link.update(link_params)
         format.html do
           redirect_to new_link_path,
-                      notice: "Link was successfully updated."
+                      notice: "Link was successfully updated"
         end
         format.json { render :show, status: :ok, location: @link }
       else
@@ -86,7 +85,7 @@ class LinksController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to root_path,
-                    notice: "Link was successfully deleted."
+                    notice: "Link was successfully deleted"
       end
       format.json { head :no_content }
     end

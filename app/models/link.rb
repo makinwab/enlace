@@ -3,7 +3,7 @@ class Link < ActiveRecord::Base
   validates :given_url, presence: true
 
   def generate_slug
-    if slug.nil?
+    if slug.nil? || slug.empty?
       self.slug = id.to_s << Array.new(5).map do |_variable|
         [*"0".."9", *"a".."z"].sample
       end.join

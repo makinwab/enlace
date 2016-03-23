@@ -1,6 +1,7 @@
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 require "factory_girl_rails"
+require "support/links_helper"
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

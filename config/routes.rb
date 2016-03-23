@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get "sessions/new"
-
-  resources :users
-  resources :links
   root 'links#new'
+  get "sessions/new"
+  resources :users
+  get "/links", to: "links#new"
+  resources :links
+
   get    "login"   => 'sessions#new'
   post   "login"   => 'sessions#create'
   delete "logout"  => 'sessions#destroy'
